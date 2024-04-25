@@ -50,7 +50,7 @@ class BlogService
     public function update($data, $blog, $hasTags){
         Storage::disk('public')->delete('uploads/'.$blog->image);
         $fileName = $data['image']->getClientOriginalName();
-        $path = $data['image']->storeAs(
+        $data['image']->storeAs(
             'uploads',
             $fileName,
             'public'
