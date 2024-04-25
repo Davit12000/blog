@@ -16,7 +16,7 @@ class BlogService
      */
     public function store($data, $hasTags){
         $fileName = $data['image']->getClientOriginalName();
-        $path = $data['image']->storeAs(
+        $data['image']->storeAs(
             'uploads',
             $fileName,
             'public'
