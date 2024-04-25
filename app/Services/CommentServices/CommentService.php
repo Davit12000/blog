@@ -18,6 +18,7 @@ class CommentService
             'owner' => Auth::id(),
             'blog_id' => $data['blog_id'],
         ]);
+        
         return new CommentResource($comment);
     }
     /**
@@ -27,6 +28,7 @@ class CommentService
         $comment->update([
             'content' => $data['content'],
         ]);
+
         return new CommentResource($comment);
     }
 
@@ -36,6 +38,7 @@ class CommentService
     
      public function delete($comment){
         $comment->delete();
+
         return new CommentResource($comment);
     }
 }

@@ -12,9 +12,9 @@ class Blog extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $table = 'blogs';
     
     protected $guarded = false;
-    protected $table = 'blogs';
 
     public function tags (){
         return $this->belongsToMany(Tag::class);

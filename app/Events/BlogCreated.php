@@ -20,6 +20,7 @@ class BlogCreated
      */
     public $user;
     public $blog;
+    
     public function __construct($user, $blog)
     {
         $this->user = $user;

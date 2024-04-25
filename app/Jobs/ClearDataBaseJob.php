@@ -32,6 +32,7 @@ class ClearDataBaseJob implements ShouldQueue
     {
         $onlySoftDeletedBlogs = Blog::onlyTrashed()->get();
         $onlySoftDeletedComments = Comment::onlyTrashed()->get();
+        
         foreach($onlySoftDeletedBlogs as $item){
             Storage::disk('public')->delete('uploads/'.$item->image);
             $item ->forceDelete();

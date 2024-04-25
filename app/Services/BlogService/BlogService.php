@@ -29,15 +29,17 @@ class BlogService
             'description' => $data['description'],
             'user_id' => Auth::id(),
         ]);
+
         if($hasTags){
             $arr = $data['tag'];
         $arr = array_unique($arr);
         $result = array_filter($arr, function($id){
             return Tag::find($id);
         });
+        
         $created_blog->tags()->sync($result);
-    
         }
+
         $user = Auth::user();
         event(new BlogCreated($user, $created_blog));
         return new BlogResource($created_blog);
@@ -55,18 +57,20 @@ class BlogService
             $fileName,
             'public'
         );
+
         $blog->update([
             'title' => $data['title'],
             'image' => $fileName,
             'description' => $data['description'],
             'user_id' => Auth::id(),
         ]);
+
         if($hasTags){
             $arr = $data['tag'];
         $arr = array_unique($arr);
         $blog->tags()->sync($arr);
-    
         }
+
         return new BlogResource($blog);
     }
 
